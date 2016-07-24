@@ -38,4 +38,10 @@ if(isset($_POST['gate']) && isset($_POST['dev']) && isset($_POST['no'])
     }
 }else{
     echo no_para();
+//    echo json_encode($_POST);
+    $res = array(
+        "code" => "0",
+        "info" => $_POST
+    );
+    echo json_encode($res);
 }
