@@ -7,7 +7,6 @@
  * 添加设备
  */
 require_once 'data.php';
-//TODO place sign
 //require_once 'Easemob.class.php';
 //添加设备到device表
 // http://jlshix.com/zigsys/add_dev.php?gate=4718&dev=66162&no=01&type=0B&name=test&state=----
