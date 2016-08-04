@@ -16,17 +16,21 @@ require_once 'data.php';
  * @return string
  */
 function app_push($tag, $msg) {
-    $app_key = '38ba4f67971442bb104f6b8e';
-    $master_secret='7764f00c840040ebbdac2334';
+    $app_key = '0ced18ab2de140569ab0b931';
+    $master_secret='2636354da65b5a332156ec01';
     $client = new JPush($app_key, $master_secret, null);
-    $result = $client->push()
-        ->setPlatform('all')
-        ->addTag($tag)
-        ->setNotificationAlert($msg)
-        ->addAndroidNotification($msg, "ZigSys-Message")
-        ->setMessage($msg)
-        ->send();
-    return json_encode($result);
+    try {
+        $result = $client->push()
+            ->setPlatform('all')
+            ->addTag($tag)
+            ->setNotificationAlert($msg)
+            ->addAndroidNotification($msg, "WLife-Message")
+            ->setMessage($msg)
+            ->send();
+        return json_encode($result);
+    } catch(Exception $e) {
+        return 'ex';
+    }
 }
 
 /**
@@ -36,17 +40,24 @@ function app_push($tag, $msg) {
  * @return string
  */
 function gate_push($tag, $msg) {
-    $app_key = 'ff8583a9819b1fb8f76e9ba7';
-    $master_secret='abaf37bf3ccb33d7279b8ab3';
+    $app_key = '1096bce02f2116a9797c0daf';
+    $master_secret='3d1796f6b7d452d0599fbc33';
     $client = new JPush($app_key, $master_secret, null);
-    $result = $client->push()
-        ->setPlatform('all')
-        ->addTag($tag)
 
-        ->setMessage($msg)
-        ->send();
-    return json_encode($result);
+    try {
+        $pusher = $client->push()
+            ->setPlatform('all')
+//        ->addTag($tag)
+            ->addAlias($tag)
+            ->setMessage($msg)
+            ->send();
+        return json_encode($pusher);
+    } catch(Exception $e) {
+//        print $e;
+        return 'ex';
+    }
 }
+
 
 
 /**
@@ -56,13 +67,17 @@ function gate_push($tag, $msg) {
  * @return string
  */
 function app_msg($tag, $msg) {
-    $app_key = '38ba4f67971442bb104f6b8e';
-    $master_secret='7764f00c840040ebbdac2334';
+    $app_key = '0ced18ab2de140569ab0b931';
+    $master_secret='2636354da65b5a332156ec01';
     $client = new JPush($app_key, $master_secret, null);
-    $result = $client->push()
-        ->setPlatform('all')
-        ->addTag($tag)
-        ->setMessage($msg)
-        ->send();
-    return json_encode($result);
+    try {
+        $result = $client->push()
+            ->setPlatform('all')
+            ->addTag($tag)
+            ->setMessage($msg)
+            ->send();
+        return json_encode($result);
+    } catch(Exception $e) {
+        return 'ex';
+    }
 }
