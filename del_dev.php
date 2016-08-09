@@ -26,5 +26,10 @@ if(isset($_POST['gate']) && isset($_POST['type']) && isset($_POST['no'])){
         echo fail();
     }
 }else{
-    echo no_para();
+//    echo no_para();
+    $res = array(
+        "code" => "0",
+        "info" => $_POST
+    );
+    echo json_encode($res);
 }
