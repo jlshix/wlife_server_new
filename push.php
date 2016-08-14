@@ -24,7 +24,7 @@ function app_push($tag, $msg) {
             ->setPlatform('all')
             ->addTag($tag)
             ->setNotificationAlert($msg)
-            ->addAndroidNotification($msg, "WLife-Message")
+            ->addAndroidNotification($msg, "微生活-消息")
             ->setMessage($msg)
             ->send();
         return json_encode($result);

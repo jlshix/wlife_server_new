@@ -7,7 +7,19 @@
 <body>
     <form action="register_gate.php" method="post">
         <input name="imei">
-
+        <input name="buildingnum">
+        <input name="housenum">
+        <input type="submit">
+    </form>
+    <form action="getPhonenuByGate.php" method="post">
+        <input name="buildingnumber">
+        <input name="housenumber">
+        <input type="submit">
+    </form>
+    <form action="statis.php" method="post">
+        日期：<input name="date">
+        网关：<input name="gimei">
+        节点：<input name="nodeid">
         <input type="submit">
     </form>
 </body>

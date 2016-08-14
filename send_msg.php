@@ -16,47 +16,6 @@ if(isset($_POST['msg']) && isset($_POST['gate']) && isset($_POST['type'])) {
     $gate = $_POST['gate'];
     $type=$_POST['type'];
 
-    if ($type == "1") {
-        if ($msg == "01") {
-            $msg = "一号结点温度异常";
-        } else if ($msg == "02") {
-            $msg = "二号结点温度异常";
-        } else if ($msg == "03") {
-            $msg = "三号结点温度异常";
-        } else if ($msg == "04") {
-            $msg = "四号结点温度异常";
-        } else if ($msg == "05") {
-            $msg = "五号结点温度异常";
-        } else if ($msg == "06") {
-            $msg = "六号结点温度异常";
-        }
-
-    } else if ($type == "2") {
-        if ($msg == "01") {
-            $msg = "一号结点红外异常";
-        } else if ($msg == "02") {
-            $msg = "二号结点红外异常";
-        } else if ($msg == "03") {
-            $msg = "三号结点红外异常";
-        } else if ($msg == "04") {
-            $msg = "四号结点红外异常";
-        }
-
-    } else if ($type == "3") {
-        if ($msg == "01") {
-            $msg = "一号结点烟雾异常";
-        } else if ($msg == "02") {
-            $msg = "二号结点烟雾异常";
-        } else if ($msg == "03") {
-            $msg = "三号结点烟雾异常";
-        } else if ($msg == "04") {
-            $msg = "四号结点烟雾异常";
-        }
-
-    }
-
-    
-
     $pdo = connect();
     $sql = "INSERT INTO `msg`(`gate_imei`,`msg`,`type`) VALUES ('{$gate}', '{$msg}', '{$type}')";
     $pdo->beginTransaction();
@@ -65,7 +24,7 @@ if(isset($_POST['msg']) && isset($_POST['gate']) && isset($_POST['type'])) {
     if ($res == 1) {
         $pdo->commit();
         // 标签固定 后期可拓展
-        app_push('jlshix', $msg);
+        app_push($gate, $msg);
         echo success();
     } else {
         $pdo->rollBack();
