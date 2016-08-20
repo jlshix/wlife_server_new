@@ -16,7 +16,8 @@ if(isset($_POST['gate']) && isset($_POST['type']) && isset($_POST['no']) && isse
     $type = $_POST['type'] ;
     $no = $_POST['no'] ;
     $name = $_POST['name'] ;
-    $sql = "UPDATE `device` SET `name`=$name WHERE gate='{$gate}' AND type='{$type}' AND device.no='{$no}'" ;
+//    $sql = "UPDATE `device` SET `name`=$name WHERE gate='{$gate}' AND type='{$type}' AND device.no='{$no}'" ;
+    $sql = "UPDATE `device` SET `name`='{$name}' WHERE `gate`='{$gate}' AND `type`='{$type}' AND `no`='{$no}'";
     $pdo->beginTransaction() ;
     $stmt = $pdo->query($sql) ;
     $rowCount = $stmt->rowCount() ;

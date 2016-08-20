@@ -17,12 +17,6 @@ if (isset($_POST['imei']) && isset($_POST['online'])) {
     if ($res == 1 || $res == 0) {
         $pdo->commit();
 
-        //TODO 灵活
-        if ($online == '0') {
-            app_msg("jlshix", "00");
-        } elseif ($online == '1') {
-            app_msg("jlshix", "01");
-        }
         echo success();
     } else {
         $pdo->rollBack();
